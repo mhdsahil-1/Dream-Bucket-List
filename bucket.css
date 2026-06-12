@@ -1,0 +1,73 @@
+/* Define color variables for light mode (default) */
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333333;
+    --container-bg: #ffffff;
+    --button-bg: #007bff;
+    --button-text: #ffffff;
+}
+
+/* Define color variables for dark mode */
+body.dark-mode {
+    --bg-color: #1e1e24;
+    --text-color: #f4f4f9;
+    --container-bg: #2b2b36;
+    --button-bg: #f4b41a;
+    --button-text: #1e1e24;
+}
+
+/* General Page Styling */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Clock Container Styling */
+.clock-container {
+    background-color: var(--container-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.4s ease;
+}
+
+#time-display {
+    font-size: 4rem;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+#date-display {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* Button Styling */
+button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.95); /* Slight shrink effect when clicked */
+}
