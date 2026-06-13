@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Bucket List  Create, Track, and Celebrate Your Goals</title>
+    <meta name="description" content="A premium, glassmorphic single-page web app to document your life dreams, track progress, and celebrate achievements with interactive stats and confetti.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="bucket.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    <div class="glow-bg-secondary"></div>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="brand">
+                <img src="logo.png" alt="Dream Bucket List Logo" class="app-logo">
+                <div>
+                    <h1>Dream Bucket List</h1>
+                    <p class="tagline">Dare to dream, map your journey, and celebrate your victories.</p>
+                </div>
+            </div>
+        </header>
+        <!-- Dynamic Storage Mode Status Banner -->
+        <div id="storage-status-banner" class="status-banner" style="display: none;">
+            <i data-lucide="info" id="status-icon"></i>
+            <span id="status-text">Detecting connection status...</span>
+        </div>
+        <main class="app-main">
+            <!-- Stats Dashboard Section -->
+            <section class="stats-panel glass-card" aria-label="Goals Progress Tracker">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-icon-wrapper blue">
+                            <i data-lucide="target"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total Dreams</span>
+                            <span class="stat-value" id="stat-total">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon-wrapper green">
+                            <i data-lucide="check-circle-2"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Completed</span>
+                            <span class="stat-value" id="stat-completed">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon-wrapper purple">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Achievement</span>
+                            <span class="stat-value" id="stat-percent">0%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">Let's start completing your goals!</span>
+                </div>
+            </section>
+            <!-- Creation Section -->
+            <section class="create-panel glass-card" aria-label="Add New Dream">
+                <h2 class="section-title"><i data-lucide="plus-circle"></i> Add a New Dream</h2>
+                <form id="goal-form" class="goal-form">
+                    <div class="form-row main-input-row">
+                        <div class="input-group search-style">
+                            <i data-lucide="compass" class="input-icon"></i>
+                            <input type="text" id="goal-title" placeholder="What is your next big dream? (e.g., Skydiving in Switzerland)" required max="100">
+                        </div>
+                    </div>
+                    <div class="form-row meta-input-row">
+                        <div class="input-group">
+                            <label for="goal-category"><i data-lucide="tag"></i> Category</label>
+                            <select id="goal-category">
+                                <option value="adventure" selected>Adventure</option>
+                                <option value="travel">Travel</option>
+                                <option value="career">Career & Personal Growth</option>
+                                <option value="health">Health & Fitness</option>
+                                <option value="creative">Creative & Skills</option>
+                                <option value="personal">Personal Goals</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="goal-priority"><i data-lucide="zap"></i> Priority</label>
+                            <select id="goal-priority">
+                                <option value="low">Low Priority</option>
+                                <option value="medium" selected>Medium Priority</option>
+                                <option value="high">High Priority</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="goal-date"><i data-lucide="calendar"></i> Target Date (Optional)</label>
+                            <input type="date" id="goal-date">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary" id="add-btn">
+                        <i data-lucide="sparkles"></i> Add to List
+                    </button>
+                </form>
+            </section>
+            <!-- Goals List Dashboard Section -->
+            <section class="list-panel glass-card" aria-label="My Bucket List">
+                <!-- Filters & Controls Toolbar -->
+                <div class="toolbar">
+                    <div class="filter-tabs">
+                        <button class="tab-btn active" data-filter="all" id="tab-all">All</button>
+                        <button class="tab-btn" data-filter="active" id="tab-active">Active</button>
+                        <button class="tab-btn" data-filter="completed" id="tab-completed">Completed</button>
+                    </div>
+                    <div class="search-sort-controls">
+                        <div class="search-box">
+                            <i data-lucide="search" class="search-icon"></i>
+                            <input type="text" id="search-input" placeholder="Search dreams...">
+                            <button id="clear-search-btn" class="clear-btn" style="display:none;"><i data-lucide="x"></i></button>
+                        </div>
+                        <div class="sort-box">
+                            <i data-lucide="arrow-up-down" class="sort-icon"></i>
+                            <select id="sort-select">
+                                <option value="newest" selected>Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="priority">High Priority First</option>
+                                <option value="date">Target Date</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Goals List Container -->
+                <div class="goals-list-container">
+                    <ul class="goals-list" id="goals-list">
+                        <!-- Dynamic items will go here -->
+                    </ul>
+                    <!-- Empty State -->
+                    <div class="empty-state" id="empty-state" style="display: none;">
+                        <div class="empty-icon-wrapper">
+                            <i data-lucide="telescope"></i>
+                        </div>
+                        <h3>Your horizon is clear...</h3>
+                        <p>No goals match your search or filter. Try adding a new dream above or adjustment of your filter settings!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="app-footer">
+            <p>&copy; 2026 Dream Bucket List. Built with passion to help you accomplish your dreams.</p>
+        </footer>
+    </div>
+    <!-- Custom JS Script -->
+    <script src="app.js"></script>
+</body>
+</html>
