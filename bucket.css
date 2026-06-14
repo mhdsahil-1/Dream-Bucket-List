@@ -1,27 +1,33 @@
 /* CSS Variables for design tokens */
 :root {
-    --bg-dark: hsl(222, 47%, 6%);
-    --bg-card: rgba(18, 26, 47, 0.45);
-    --border-glass: rgba(255, 255, 255, 0.07);
-    --border-glass-hover: rgba(255, 255, 255, 0.15);
-    --primary-glow: linear-gradient(135deg, hsl(263, 85%, 55%) 0%, hsl(325, 85%, 50%) 100%);
-    --primary-glow-hover: linear-gradient(135deg, hsl(263, 95%, 60%) 0%, hsl(325, 95%, 55%) 100%);
-    --text-primary: hsl(210, 20%, 98%);
-    --text-secondary: hsl(217, 15%, 72%);
-    --text-muted: hsl(217, 10%, 55%);
+    --bg-dark: hsl(210, 40%, 98%);
+    --bg-card: rgba(255, 255, 255, 0.85);
+
+    --border-glass: rgba(0, 0, 0, 0.08);
+    --border-glass-hover: rgba(0, 0, 0, 0.15);
+
+    --primary-glow: linear-gradient(135deg, hsl(263, 85%, 60%) 0%, hsl(325, 85%, 55%) 100%);
+    --primary-glow-hover: linear-gradient(135deg, hsl(263, 95%, 65%) 0%, hsl(325, 95%, 60%) 100%);
+
+    --text-primary: hsl(222, 47%, 15%);
+    --text-secondary: hsl(215, 20%, 40%);
+    --text-muted: hsl(215, 12%, 55%);
+
     --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
     /* Category colors */
-    --cat-adventure: hsl(265, 85%, 65%);
-    --cat-travel: hsl(195, 85%, 50%);
-    --cat-career: hsl(145, 75%, 45%);
-    --cat-health: hsl(340, 80%, 55%);
-    --cat-creative: hsl(42, 90%, 52%);
-    --cat-personal: hsl(12, 85%, 55%);
+    --cat-adventure: hsl(265, 85%, 50%);
+    --cat-travel: hsl(195, 85%, 45%);
+    --cat-career: hsl(145, 75%, 35%);
+    --cat-health: hsl(340, 80%, 45%);
+    --cat-creative: hsl(42, 90%, 45%);
+    --cat-personal: hsl(12, 85%, 45%);
+
     /* Priority colors */
-    --pri-low: hsl(210, 75%, 55%);
-    --pri-medium: hsl(38, 90%, 52%);
-    --pri-high: hsl(355, 80%, 52%);
+    --pri-low: hsl(210, 75%, 45%);
+    --pri-medium: hsl(38, 90%, 45%);
+    --pri-high: hsl(355, 80%, 45%);
 }
 /* Reset & Box Sizing */
 * {
@@ -30,7 +36,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: var(--bg-dark);
+    background-color: #fafafa;
     color: var(--text-primary);
     font-family: var(--font-body);
     min-height: 100vh;
@@ -83,17 +89,17 @@ body {
 }
 /* Glassmorphism Styles */
 .glass-card {
-    background: var(--bg-card);
+     background: #ffffff;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border-glass);
+     border: 1px solid #e8e8e8;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+     box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     padding: 2rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .glass-card:hover {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: #d8d8d8;
 }
 /* Header Styles */
 .app-header {
