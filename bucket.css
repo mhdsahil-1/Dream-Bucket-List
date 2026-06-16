@@ -51,7 +51,7 @@ body {
     left: -10%;
     width: 60vw;
     height: 60vw;
-    background: radial-gradient(circle, rgba(111, 44, 246, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
+    background: none;
     border-radius: 50%;
     z-index: -2;
     animation: floatGlow 25s infinite alternate ease-in-out;
@@ -63,7 +63,7 @@ body {
     right: -10%;
     width: 50vw;
     height: 50vw;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+    background: none;
     border-radius: 50%;
     z-index: -2;
     animation: floatGlowSecondary 20s infinite alternate ease-in-out;
@@ -131,12 +131,7 @@ body {
     font-size: 2rem;
     font-weight: 800;
     letter-spacing: -0.5px;
-    background: none;
-     background-image: linear-gradient(135deg, hsl(263, 85%, 60%), hsl(325, 85%, 55%));
-     background-clip: text;
-    -webkit-background-clip: text;
-     -webkit-text-fill-color: #111827;
-      color: #111827;
+    color: #111827;
 }
 .tagline {
     font-size: 0.95rem;
@@ -387,8 +382,8 @@ body {
 }
 .search-box input {
     width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-glass);
+    background: #ffffff;
+    border: 1px solid #dddddd;
     border-radius: 10px;
     padding: 0.6rem 2.2rem 0.6rem 2.2rem;
     color: var(--text-primary);
@@ -639,7 +634,7 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 .btn-icon:hover {
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: #f3f4f6;
 }
 .btn-icon.edit-btn:hover {
     color: #3b82f6;
@@ -730,8 +725,8 @@ body {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #f8f8f8;
+    border: 1px solid #ececec;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -846,17 +841,17 @@ body {
     animation: fadeIn 0.3s ease-in-out;
 }
 .status-banner.local-mode {
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.2);
-    color: hsl(38, 95%, 70%);
+    background: #f59e0b;
+    border: 1px solid #f59e0b;
+    color: #ffffff;
 }
 .status-banner.local-mode i {
     color: var(--pri-medium);
 }
 .status-banner.server-mode {
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.15);
-    color: hsl(145, 75%, 70%);
+    background: #10b981;
+    border: 1px solid #10b981;
+    color: #ffffff;
 }
 .status-banner.server-mode i {
     color: var(--cat-career);
